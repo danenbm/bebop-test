@@ -11,9 +11,17 @@ fn main() {
         data: vec![1_u8, 1, 1],
     };
 
-    instruction.serialize(&mut buf).unwrap();
+    serialize_instruction(&instruction, &mut buf);
 
-    let deserialized_instruction = CompiledInstruction::deserialize(&buf).unwrap();
+    let deserialized_instruction = deserialize_instruction(&buf);
 
     assert_eq!(instruction, deserialized_instruction);
+}
+
+fn serialize_instruction(instruction: &CompiledInstruction, buf: &mut Vec<u8>) {
+    instruction.serialize(buf).unwrap();
+}
+
+fn deserialize_instruction(buf: &[u8]) -> CompiledInstruction {
+    CompiledInstruction::deserialize(buf).unwrap()
 }

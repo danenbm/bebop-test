@@ -1,8 +1,8 @@
-# bebop-test
-
-Transaction Info struct is in schemas/transaction_info.bop.
-
-The build.rs script will compile the schema file and generate the Rust structs and trait implementations needed for serialization/deserialization.
+# Bebop Test
+* TransactionInfo struct is in schemas/transaction_info.bop.
+* The build.rs script will compile the schema file and generate the Rust structs and trait implementations.
+* Generated code will end up in src/generated.
+* Basic test of serialization/deserialization in src/main.rs.
 
 # Installation
 ```

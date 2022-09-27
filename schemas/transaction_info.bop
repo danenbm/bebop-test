@@ -1,0 +1,30 @@
+message TransactionInfo {
+    1 -> bool isVote;
+    2 -> Pubkey[] accountKeys;
+    3 -> string[] logMessages;
+    4 -> InnerInstructions[] innerInstructions;
+    5 -> CompiledInstruction[] outerInstructions;
+    6 -> uint64 slot;
+    7 -> string slotIndex;
+    8 -> int64 seenAt;
+}
+
+struct Pubkey {
+    uint8[] key;
+}
+
+struct InnerInstructions {
+    // Transaction instruction index.
+    uint8 index;
+    // List of inner instructions.
+    CompiledInstruction[] instructions;
+}
+
+struct CompiledInstruction {
+    // Index into the transaction keys array indicating the program account that executes this instruction.
+    uint8 program_id_index;
+    // Ordered indices into the transaction keys array indicating which accounts to pass to the program.
+    uint8[] accounts;
+    // The program input data.
+    uint8[] data;
+}
